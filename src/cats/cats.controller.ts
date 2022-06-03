@@ -37,22 +37,22 @@ export class CatsController {
     return this.catsService.findOneByBreed(breed);
   }
 
-  @Get('/average-age')
+  @Get('/average/age')
   averageAge() {
-    return 'this.catsService.averageAge()';
+    return this.catsService.averageAge();
   }
 
-  @Get('/oldest')
+  @Get('oldest/age')
   oldest() {
     return this.catsService.findOldest();
   }
 
-  @Get('/youngest')
+  @Get('youngest/age')
   youngest() {
     return this.catsService.findYoungest();
   }
 
-  @Get('/count')
+  @Get('count/all')
   count() {
     return this.catsService.count();
   }
