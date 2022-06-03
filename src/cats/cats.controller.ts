@@ -37,7 +37,7 @@ export class CatsController {
     return this.catsService.findOneByBreed(breed);
   }
 
-  @Get('/average/age')
+  @Get('average/age')
   averageAge() {
     return this.catsService.averageAge();
   }
@@ -72,12 +72,12 @@ export class CatsController {
     return this.catsService.remove(+id);
   }
 
-  @Delete('/delete/all')
+  @Delete('delete/all')
   removeAll() {
     return this.catsService.removeAll();
   }
 
-  @Delete('/remove-by-breed/:breed')
+  @Delete('remove-by-breed/:breed')
   removeByBreed(@Param('breed') breed: string) {
     return this.catsService.removeByBreed(breed);
   }
