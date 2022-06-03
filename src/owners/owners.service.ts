@@ -84,7 +84,10 @@ export class OwnersService {
     return this.owners.map((owner) => {
       return {
         ...owner,
-        cats: owner.cats.map((cat) => this.catServices.findOne(cat.catId)),
+        cats: owner.cats.map((cat) => ({
+          ...this.catServices.findOne(cat.catId),
+          adoptedOn: cat.adoptedOn,
+        })),
       };
     });
   }
@@ -93,8 +96,25 @@ export class OwnersService {
     const owner = this.owners.find((owner) => owner.id === id);
     // return the owner after we populate its cats
     return owner
-      ? owner.cats.map((cat) => this.catServices.findOne(cat.catId))
+      ? {
+          ...owner,
+          cats: owner.cats.map((cat) => ({
+            ...this.catServices.findOne(cat.catId),
+            adoptedOn: cat.adoptedOn,
+          })),
+        }
       : 'Owner not found';
+  }
+
+  // find owner by cat id
+  findByCatId(catId: number) {
+    const owners = this.owners.find((owner) => {
+      const haveCat = owner.cats.find((cat) => cat.catId === catId);
+      if (haveCat) {
+        return { ...owner };
+      }
+    });
+    return owners ? owners : 'Owner not found';
   }
 
   // update the owner with the given id

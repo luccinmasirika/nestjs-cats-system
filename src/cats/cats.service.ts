@@ -11,7 +11,7 @@ export class CatsService {
       name: 'Cat 1',
       age: 1,
       breed: 'Breed 1',
-      adopted: false,
+      adopted: true,
     },
     {
       id: 2,

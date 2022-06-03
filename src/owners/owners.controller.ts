@@ -46,6 +46,11 @@ export class OwnersController {
     return this.ownersService.findOne(+id);
   }
 
+  @Get('/owner/:catId')
+  findByCatId(@Param('catId') id: string) {
+    return this.ownersService.findByCatId(+id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateOwnerDto: UpdateOwnerDto) {
     return this.ownersService.update(+id, updateOwnerDto);

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { OwnersService } from './owners.service';
+import { CatsModule } from 'src/cats/cats.module';
 import { OwnersController } from './owners.controller';
-import { CatsService } from '../cats/cats.service';
+import { OwnersService } from './owners.service';
 
 @Module({
   controllers: [OwnersController],
   providers: [OwnersService],
-  imports: [CatsService],
+  imports: [CatsModule],
 })
 export class OwnersModule {}
