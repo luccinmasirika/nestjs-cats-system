@@ -11,18 +11,21 @@ export class CatsService {
       name: 'Cat 1',
       age: 1,
       breed: 'Breed 1',
+      adopted: false,
     },
     {
       id: 2,
       name: 'Cat 2',
       age: 2,
       breed: 'Breed 2',
+      adopted: false,
     },
     {
       id: 3,
       name: 'Cat 3',
       age: 3,
       breed: 'Breed 3',
+      adopted: false,
     },
   ];
 
@@ -37,8 +40,8 @@ export class CatsService {
   }
 
   // update the element with the given id
-  update(id: number, updateCatDto: UpdateCatDto): CreateCatDto[] {
-    return this.cats.map((el) => {
+  update(id: number, updateCatDto: UpdateCatDto): string {
+    this.cats = this.cats.map((el) => {
       // if the id matches, update the element
       if (el.id === id) {
         return { ...el, ...updateCatDto };
@@ -46,6 +49,7 @@ export class CatsService {
       // otherwise return the element
       return el;
     });
+    return `Cat with id ${id} updated`;
   }
 
   // return all elements

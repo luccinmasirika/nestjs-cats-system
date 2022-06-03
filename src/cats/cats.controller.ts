@@ -72,7 +72,7 @@ export class CatsController {
     return this.catsService.remove(+id);
   }
 
-  @Delete('/remove-all')
+  @Delete('/delete/all')
   removeAll() {
     return this.catsService.removeAll();
   }

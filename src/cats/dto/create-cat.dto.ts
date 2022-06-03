@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 export class CreateCatDto {
   @IsNumber()
@@ -19,4 +19,8 @@ export class CreateCatDto {
   @IsString()
   @IsNotEmpty()
   breed: string;
+
+  @ApiProperty({ type: Boolean, example: false })
+  @IsBoolean()
+  adopted: boolean;
 }
